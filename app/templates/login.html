@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Вход в TaskBoard{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Вход в TaskBoard</h1>
+        {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+        <form method="post" action="/login">
+          <input type="hidden" name="next" value="{{ next }}">
+          <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" id="email" name="email" type="email" required autofocus>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="password">Пароль</label>
+            <input class="form-control" id="password" name="password" type="password" required>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Войти</button>
+        </form>
+        <hr>
+        <p class="small text-muted mb-1">Демо-доступ:</p>
+        <ul class="small text-muted mb-0">
+          <li>admin@taskboard.local / admin123</li>
+          <li>manager@taskboard.local / manager123</li>
+          <li>employee@taskboard.local / employee123</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

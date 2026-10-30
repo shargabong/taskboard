@@ -1,0 +1,16 @@
+body {
+  min-height: 100vh;
+}
+
+.task-description {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.65rem 0.75rem;
+}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Пользователи{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h1 class="h3 mb-1">Пользователи</h1>
+    <p class="text-muted mb-0">Учётные записи и роли</p>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white fw-semibold">Новый пользователь</div>
+      <div class="card-body">
+        <form method="post" action="/admin/users">
+          <div class="mb-2">
+            <label class="form-label small" for="full_name">Имя</label>
+            <input class="form-control" id="full_name" name="full_name" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label small" for="email">Email</label>
+            <input class="form-control" id="email" name="email" type="email" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label small" for="role">Роль</label>
+            <select class="form-select" id="role" name="role">
+              {% for item in roles %}
+                <option value="{{ item.value }}">{{ role_labels[item] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small" for="password">Пароль</label>
+            <input class="form-control" id="password" name="password" type="password" minlength="6" required>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light"><tr><th>Имя</th><th>Email</th><th>Роль</th><th>Статус</th><th></th></tr></thead>
+          <tbody>
+          {% for item in users %}
+            <tr>
+              <td>{{ item.full_name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ role_labels[item.role] }}</td>
+              <td>
+                {% if item.is_active %}<span class="badge bg-success">активен</span>
+                {% else %}<span class="badge bg-secondary">отключён</span>{% endif %}
+              </td>
+              <td class="text-end">
+                {% if item.id != user.id %}
+                <form method="post" action="/admin/users/{{ item.id }}/toggle">
+                  <button class="btn btn-outline-secondary btn-sm" type="submit">
+                    {% if item.is_active %}Отключить{% else %}Включить{% endif %}
+                  </button>
+                </form>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

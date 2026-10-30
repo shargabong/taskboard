@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h1 class="h3 mb-1">Сводка</h1>
+    <p class="text-muted mb-0">Задачи, которые вам доступны</p>
+  </div>
+  <a class="btn btn-primary" href="/tasks/new">Новая задача</a>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100"><div class="card-body">
+      <div class="text-muted small">Всего задач</div>
+      <div class="display-6">{{ stats.total }}</div>
+    </div></div>
+  </div>
+  {% for status, count in stats.counts.items() %}
+  <div class="col-md-3">
+    <div class="card shadow-sm h-100"><div class="card-body">
+      <div class="text-muted small">{{ status_labels[status] }}</div>
+      <div class="display-6">{{ count }}</div>
+    </div></div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+    <span class="fw-semibold">Последние задачи</span>
+    <a class="small" href="/tasks">Все задачи</a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr><th>#</th><th>Задача</th><th>Статус</th><th>Приоритет</th><th>Исполнитель</th><th>Создана</th></tr>
+      </thead>
+      <tbody>
+      {% for row in recent %}
+        <tr>
+          <td>{{ row.task.id }}</td>
+          <td><a href="/tasks/{{ row.task.id }}">{{ row.task.title }}</a></td>
+          <td><span class="badge bg-{{ status_classes[row.task.status] }}">{{ status_labels[row.task.status] }}</span></td>
+          <td><span class="badge bg-{{ priority_classes[row.task.priority] }}">{{ priority_labels[row.task.priority] }}</span></td>
+          <td>{{ row.assignee.full_name if row.assignee else 'не назначен' }}</td>
+          <td>{{ format_dt(row.task.created_at) }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="6" class="text-center text-muted py-4">Задач пока нет</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
