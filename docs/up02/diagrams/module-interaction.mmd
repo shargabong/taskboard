@@ -1,0 +1,7 @@
+flowchart LR
+  U[Браузер] -->|HTTP| R[FastAPI routers]
+  R --> S[Сервисы]
+  S --> M[SQLModel]
+  M --> DB[(База данных)]
+  R --> T[Jinja2 шаблоны]
+  T --> U

@@ -1,0 +1,15 @@
+flowchart TB
+  subgraph TaskBoard
+    A[Авторизация и роли]
+    B[Задачи]
+    C[Комментарии]
+    D[Статусы]
+    E[Администрирование]
+    F[Сводка]
+  end
+  A --> B
+  B --> C
+  B --> D
+  D --> F
+  E --> A
+  G[(PostgreSQL или SQLite)] --- B
