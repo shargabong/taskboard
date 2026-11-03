@@ -1,0 +1,39 @@
+classDiagram
+  class User {
+    +int id
+    +str email
+    +str full_name
+    +str password_hash
+    +Role role
+    +bool is_active
+    +datetime created_at
+    +login()
+    +logout()
+  }
+  class Task {
+    +int id
+    +str title
+    +str description
+    +TaskStatus status
+    +Priority priority
+    +int author_id
+    +int assignee_id
+    +datetime created_at
+    +datetime updated_at
+    +datetime completed_at
+    +create()
+    +change_status()
+    +add_comment()
+  }
+  class Comment {
+    +int id
+    +int task_id
+    +int author_id
+    +str body
+    +datetime created_at
+  }
+
+  User "1" --> "*" Task : автор
+  User "1" --> "*" Task : исполнитель
+  User "1" --> "*" Comment : пишет
+  Task "1" --> "*" Comment : содержит
