@@ -1,0 +1,5 @@
+﻿=== PostgreSQL backup/restore test ===
+dump size: 9506 bytes
+source task count: 6
+restored task count: 6
+RESULT: OK

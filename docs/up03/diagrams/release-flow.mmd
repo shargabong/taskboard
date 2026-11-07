@@ -1,0 +1,7 @@
+flowchart LR
+  G[GitHub tag v0.1.0] --> A[GitHub Actions]
+  A --> B[Docker build]
+  B --> R[(GHCR)]
+  R --> C[docker compose pull]
+  C --> APP[TaskBoard]
+  C --> DB[(PostgreSQL)]
