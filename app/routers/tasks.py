@@ -127,14 +127,18 @@ def task_create(
     selected_priority = parse_priority(priority) or Priority.normal
     if user.role == Role.employee:
         assignee_id = user.id
-    task = create_task(
-        session,
-        user,
-        title,
-        description,
-        selected_priority,
-        assignee_id,
-    )
+    try:
+        task = create_task(
+            session,
+            user,
+            title,
+            description,
+            selected_priority,
+            assignee_id,
+        )
+    except ValueError:
+        flash(request, "Исполнитель недоступен", "danger")
+        return RedirectResponse("/tasks/new", status_code=303)
     flash(request, f"Задача #{task.id} создана")
     return RedirectResponse(f"/tasks/{task.id}", status_code=303)
 
