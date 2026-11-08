@@ -1,0 +1,7 @@
+stateDiagram-v2
+  [*] --> new
+  new --> in_progress: взять в работу
+  new --> done: сразу выполнена
+  in_progress --> done: завершить
+  in_progress --> new: вернуть
+  done --> in_progress: переоткрыть
