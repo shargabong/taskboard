@@ -43,7 +43,7 @@ employee@taskboard.local / employee123
 docker compose -f docker-compose.release.yml ps
 .venv\Scripts\python.exe -m ruff check .
 .venv\Scripts\python.exe -m pytest -v
-scripts\backup-db.bat
+make backup
 ```
 
 ## 5. Если что-то упало

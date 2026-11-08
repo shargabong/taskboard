@@ -35,9 +35,9 @@ RESULT: OK
 
 ## 5. Скрипты
 
-- `scripts/backup-db.bat`;
-- `scripts/restore-db.bat`;
-- `scripts/backup-sqlite.bat`.
+- `make backup`;
+- `make restore`;
+- `make backup-sqlite`.
 
 ## 6. Стратегия
 

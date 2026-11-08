@@ -24,10 +24,10 @@ uvicorn app.main:app --reload
 ## 3. Скрипты
 
 ```powershell
-scripts\setup.bat
-scripts\run.bat
-scripts\check.bat
-scripts\format.bat
+make setup
+make run
+make check
+make format
 ```
 
 ## 4. Docker
@@ -61,8 +61,8 @@ ghcr.io/shargabong/taskboard:v0.1.0
 Проверено в отдельной папке:
 
 ```text
-setup.bat -> зависимости установлены, .env создан
-check.bat -> All checks passed, 16 passed in 2.10s
+make setup -> окружение готово, .env создан
+make check -> All checks passed, 16 passed in 2.10s
 ```
 
 Логи: `docs/up03/clean-check-output.txt`.

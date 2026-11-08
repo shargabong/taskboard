@@ -20,7 +20,7 @@ B008 отключён осознанно: FastAPI использует `Depends`
 | `app/routers/tasks.py` | Импорты и форматирование | `ruff format` | Исправлено |
 | `app/config.py` | Демо-секрет | Вынесен в env, пример для production | Задокументировано |
 | `docker-compose.release.yml` | Порт базы не должен быть наружу | Порт не публикуется | Исправлено |
-| `scripts/backup-db.bat` | `docker` может быть не в PATH | Добавлен fallback на Docker Desktop | Исправлено |
+| `make backup` | `docker` может быть не в PATH | Добавлен fallback на Docker Desktop | Исправлено |
 | `app/services/tasks.py` | Нет проверки перехода статуса | Добавлена матрица переходов | Исправлено |
 | `app/routers/tasks.py` | Нет проверки чужой задачи | Добавлена `can_view` | Исправлено |
 
