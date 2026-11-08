@@ -65,3 +65,28 @@ def test_status_transitions_for_manager():
 def test_priority_values():
     assert Priority.low.value == "low"
     assert Priority.high.value == "high"
+
+
+def test_active_assignee_lookup():
+    from sqlmodel import Session, SQLModel, create_engine
+
+    from app.services.tasks import create_task
+
+    engine = create_engine("sqlite://")
+    SQLModel.metadata.create_all(engine)
+    with Session(engine) as session:
+        manager = User(
+            id=1,
+            email="manager@test.local",
+            full_name="Manager",
+            password_hash="x",
+            role=Role.manager,
+        )
+        session.add(manager)
+        session.commit()
+        try:
+            create_task(session, manager, "T", "D", Priority.normal, 999)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("ожидали отказ для отсутствующего исполнителя")
