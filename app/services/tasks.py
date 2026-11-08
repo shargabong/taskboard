@@ -33,6 +33,10 @@ def create_task(
 ) -> Task:
     if author.role == Role.employee:
         assignee_id = author.id
+    elif assignee_id is not None:
+        assignee = session.get(User, assignee_id)
+        if assignee is None or not assignee.is_active:
+            raise ValueError("Исполнитель недоступен")
     task = Task(
         title=title.strip(),
         description=description.strip(),
