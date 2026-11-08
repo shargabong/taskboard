@@ -1,6 +1,6 @@
 PY=.venv/Scripts/python.exe
 
-.PHONY: setup run check format test lint docker-up docker-down logs release
+.PHONY: setup run check format test lint quality security deps docker-up docker-down logs release
 
 setup:
 	python -m venv .venv
@@ -22,6 +22,15 @@ format:
 
 test:
 	$(PY) -m pytest
+
+quality: lint test
+	$(PY) -m ruff format --check .
+
+security:
+	scripts/security-check.bat
+
+deps:
+	scripts/deps-check.bat
 
 docker-up:
 	docker compose up --build
