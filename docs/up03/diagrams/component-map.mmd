@@ -1,0 +1,13 @@
+flowchart TB
+  U[Браузер] --> W[FastAPI и Jinja2]
+  W --> R[Роутеры]
+  R --> S[Сервисы]
+  S --> M[SQLModel]
+  M --> DB[(PostgreSQL или SQLite)]
+  W --> T[Шаблоны]
+  T --> U
+  GH[GitHub] --> CI[GitHub Actions]
+  CI --> GH
+  CI --> GHCR[GHCR: taskboard:v0.1.0]
+  GHCR --> D[Docker Compose]
+  D --> W
