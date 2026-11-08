@@ -1,0 +1,4 @@
+# Нормализация переводов строк: shell-скрипты всегда LF.
+*.sh text eol=lf
+Makefile text eol=lf
+*.bat text eol=crlf

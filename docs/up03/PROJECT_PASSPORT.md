@@ -71,7 +71,7 @@ Python 3.12, FastAPI, SQLModel, Jinja2, Bootstrap, SQLite, PostgreSQL, pytest, r
 3. Открыть `/health`.
 4. Войти руководителем.
 5. Создать задачу и провести по статусам.
-6. Запустить `scripts\check.bat`.
+6. Запустить `make check`.
 7. Посмотреть `docs/up03/`.
 
 ## 8. Вывод

@@ -4,6 +4,8 @@
 
 Три роли, задачи, комментарии, статусы, Docker, PostgreSQL, CI и release build в GitHub Container Registry. Без платных сервисов.
 
+Проект запускается на Windows, Linux и macOS.
+
 ## Стек
 
 - Python 3.12
@@ -16,15 +18,34 @@
 
 ## Быстрый старт
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements-dev.txt
-Copy-Item .env.example .env
-uvicorn app.main:app --reload
+Кроссплатформенно, через Makefile:
+
+```bash
+make setup
+make run
 ```
 
 Открыть http://127.0.0.1:8000
+
+Вручную без make:
+
+Linux / macOS:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt
+cp .env.example .env
+.venv/bin/python -m uvicorn app.main:app --reload
+```
+
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+Copy-Item .env.example .env
+.venv\Scripts\python.exe -m uvicorn app.main:app --reload
+```
 
 ## Демо-доступ
 
@@ -36,13 +57,13 @@ uvicorn app.main:app --reload
 
 ## Docker
 
-```powershell
+```bash
 docker compose up --build
 ```
 
 ## Release build
 
-```powershell
+```bash
 docker compose -f docker-compose.release.yml up -d
 ```
 
@@ -50,22 +71,22 @@ docker compose -f docker-compose.release.yml up -d
 
 ## Проверки
 
-```powershell
-scripts\check.bat
+```bash
+make check
 ```
 
-Или:
+Линтер и тесты отдельно:
 
-```powershell
-.venv\Scripts\python.exe -m ruff check .
-.venv\Scripts\python.exe -m pytest -v
+```bash
+make lint
+make test
 ```
 
-## Документация
+## документация
 
 - `docs/up02/` - учебная практика ПМ.02.
 - `docs/up03/` - учебная практика ПМ.03.
 
 ## Статус
 
-Локально приложение работает. Docker, тесты и линтер проверены. Дальше release build в GHCR и короткие документы по практике.
+Приложение работает, Docker, тесты и линтер проверены, release build публикуется в GHCR.

@@ -26,7 +26,7 @@
 | Место | До | После |
 | --- | --- | --- |
 | `seed.py` | Длинные строки | Разбиты |
-| `backup-db.bat` | Только `docker` из PATH | Fallback на Docker Desktop |
+| `make backup` | Только `docker` из PATH | Fallback на Docker Desktop |
 | `docker-compose.release.yml` | Порт БД наружу | Порт не публикуется |
 | `tasks.py` | Нет проверки доступа | `can_view` |
 | `services/tasks.py` | Нет матрицы переходов | `ALLOWED_TRANSITIONS` |
