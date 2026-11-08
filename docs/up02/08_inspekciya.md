@@ -48,7 +48,7 @@ B008 отключён осознанно: FastAPI использует `Depends`
 
 ```text
 ruff check . -> All checks passed
-pytest -> 15 passed
+pytest -> 16 passed
 GET /health -> 200
 ```
 

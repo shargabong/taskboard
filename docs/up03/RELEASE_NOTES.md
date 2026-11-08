@@ -30,7 +30,7 @@ GET http://127.0.0.1:8000/health
 
 ```text
 ruff check . -> All checks passed
-pytest -> 15 passed
+pytest -> 16 passed
 POST /login -> 200
 GET /tasks -> 200
 Backup/restore PostgreSQL -> OK

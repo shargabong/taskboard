@@ -35,7 +35,7 @@
 
 ```text
 ruff check . -> All checks passed
-pytest -> 15 passed
+pytest -> 16 passed
 GET /health -> 200
 docker compose -f docker-compose.release.yml ps -> app healthy, db healthy
 ```

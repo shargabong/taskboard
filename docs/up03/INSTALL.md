@@ -11,7 +11,7 @@
 ## 2. Локально
 
 ```powershell
-cd F:\dolgi\taskboard
+cd taskboard
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements-dev.txt
@@ -62,7 +62,7 @@ ghcr.io/shargabong/taskboard:v0.1.0
 
 ```text
 setup.bat -> зависимости установлены, .env создан
-check.bat -> All checks passed, 15 passed in 2.08s
+check.bat -> All checks passed, 16 passed in 2.10s
 ```
 
 Логи: `docs/up03/clean-check-output.txt`.
