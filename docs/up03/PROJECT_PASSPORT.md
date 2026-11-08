@@ -55,7 +55,7 @@ Python 3.12, FastAPI, SQLModel, Jinja2, Bootstrap, SQLite, PostgreSQL, pytest, r
 | Пункт | Статус |
 | --- | --- |
 | Приложение работает | Да |
-| Тесты | 15 из 15 |
+| Тесты | 16 из 16 |
 | Линтер | Чисто |
 | Docker | App и БД healthy |
 | Release build | Образ собран локально |

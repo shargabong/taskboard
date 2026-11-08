@@ -55,7 +55,7 @@ taskboard/
 
 ```text
 ruff check . -> All checks passed
-pytest -> 15 passed
+pytest -> 16 passed
 GET /health -> 200
 docker compose up -d --build -> app и db healthy
 release build -> ghcr.io/shargabong/taskboard:v0.1.0, health 200

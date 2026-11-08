@@ -12,7 +12,7 @@
 - управление пользователями;
 - сводка на главной;
 - healthcheck `/health`;
-- 15 тестов и ruff;
+- 16 тестов и ruff;
 - Dockerfile, compose и release compose;
 - CI и release workflow в GHCR;
 - backup и restore PostgreSQL;

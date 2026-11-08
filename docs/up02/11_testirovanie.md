@@ -40,8 +40,8 @@
 ## 11.4. Результат
 
 ```text
-collected 15 items
-15 passed, 1 warning in 2.08s
+collected 16 items
+16 passed, 1 warning in 2.08s
 ```
 
 Предупреждение Starlette про `httpx2` не влияет на работу.
